@@ -3,7 +3,10 @@
     <v-container fluid fill-height>
       <v-layout align-center justify-center>
         <v-flex xs12 sm8 md4>
-          <v-card class="elevation-12"> test </v-card>
+          <v-card class="elevation-12">
+            <v-btn color="primary" elevation="2"> あああ</v-btn>
+            <v-btn color="primary" elevation="2"> あああ</v-btn>
+          </v-card>
         </v-flex>
       </v-layout>
     </v-container>
