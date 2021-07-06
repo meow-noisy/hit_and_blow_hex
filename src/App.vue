@@ -2,9 +2,15 @@
   <v-app>
     <v-container fluid fill-height>
       <v-layout align-center justify-center>
-        <v-flex xs12 sm8 md4>
+        <v-flex xs12 sm8 md8>
+          {{ message }}
           <v-card class="elevation-12">
-            <v-btn color="primary" elevation="2" height="100" width="100"
+            <v-btn
+              color="primary"
+              elevation="2"
+              height="100"
+              width="100"
+              v-on:click="changeText(0)"
               >0</v-btn
             >
             <v-btn color="primary" elevation="2" height="100" width="100"
@@ -80,7 +86,14 @@ export default {
   components: {},
 
   data: () => ({
-    //
+    estimate_array: [],
+    message: "hello",
   }),
+
+  methods: {
+    changeText: function (num) {
+      this.message = num;
+    },
+  },
 };
 </script>
