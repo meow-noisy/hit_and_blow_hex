@@ -11,6 +11,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('0')"
+              :disabled="num_button_disable"
               >0</v-btn
             >
             <v-btn
@@ -19,6 +20,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('1')"
+              :disabled="num_button_disable"
               >1</v-btn
             >
             <v-btn
@@ -27,6 +29,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('2')"
+              :disabled="num_button_disable"
               >2</v-btn
             >
             <v-btn
@@ -35,6 +38,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('3')"
+              :disabled="num_button_disable"
               >3</v-btn
             >
             <v-btn
@@ -43,6 +47,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('4')"
+              :disabled="num_button_disable"
               >4</v-btn
             >
             <v-btn
@@ -51,6 +56,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('5')"
+              :disabled="num_button_disable"
               >5</v-btn
             >
             <v-btn
@@ -59,6 +65,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('6')"
+              :disabled="num_button_disable"
               >6</v-btn
             >
             <v-btn
@@ -67,6 +74,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('7')"
+              :disabled="num_button_disable"
               >7</v-btn
             >
             <v-btn
@@ -75,6 +83,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('8')"
+              :disabled="num_button_disable"
               >8</v-btn
             >
             <v-btn
@@ -83,6 +92,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('9')"
+              :disabled="num_button_disable"
               >9</v-btn
             >
             <v-btn
@@ -91,6 +101,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('A')"
+              :disabled="num_button_disable"
               >A</v-btn
             >
             <v-btn
@@ -99,6 +110,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('B')"
+              :disabled="num_button_disable"
               >B</v-btn
             >
             <v-btn
@@ -107,6 +119,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('C')"
+              :disabled="num_button_disable"
               >C</v-btn
             >
             <v-btn
@@ -115,6 +128,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('D')"
+              :disabled="num_button_disable"
               >D</v-btn
             >
             <v-btn
@@ -123,6 +137,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('E')"
+              :disabled="num_button_disable"
               >E</v-btn
             >
             <v-btn
@@ -131,6 +146,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray('F')"
+              :disabled="num_button_disable"
               >F</v-btn
             >
             <v-btn color="accent" elevation="2" height="100" width="100"
@@ -162,6 +178,7 @@ export default {
 
   data: () => ({
     estimate_array: [],
+    num_button_disable: false,
   }),
 
   computed: {
