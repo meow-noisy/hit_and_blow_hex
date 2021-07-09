@@ -16,7 +16,12 @@
               v-bind:disabled="num_button_disable"
               >{{ label }}</v-btn
             >
-            <v-btn color="accent" elevation="2" height="100" width="100"
+            <v-btn
+              color="accent"
+              elevation="2"
+              height="100"
+              width="100"
+              v-bind:disabled="submit_button_disable"
               >submit</v-btn
             >
             <v-btn color="accent" elevation="2" height="100" width="100"
@@ -45,6 +50,7 @@ export default {
 
   data: () => ({
     estimate_array: [],
+    limit_of_num: 5,
     button_label_list: [
       "0",
       "1",
@@ -69,6 +75,10 @@ export default {
   computed: {
     message: function () {
       return this.estimate_array;
+    },
+
+    submit_button_disable: function () {
+      return this.estimate_array.length < this.limit_of_num;
     },
   },
 
