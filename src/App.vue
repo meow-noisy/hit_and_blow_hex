@@ -84,6 +84,10 @@ export default {
 
   methods: {
     addNumToEstimateArray: function (num) {
+      if (this.estimate_array.length + 1 > this.limit_of_num) {
+        alert("over length. please submit or clear");
+        return;
+      }
       this.estimate_array.push(num);
     },
   },
