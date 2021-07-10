@@ -24,7 +24,12 @@
               v-bind:disabled="submit_button_disable"
               >submit</v-btn
             >
-            <v-btn color="accent" elevation="2" height="100" width="100"
+            <v-btn
+              color="accent"
+              elevation="2"
+              height="100"
+              width="100"
+              v-on:click="clearEstimateArrayElements()"
               >clear</v-btn
             >
             <v-btn color="accent" elevation="2" height="100" width="100"
@@ -89,6 +94,9 @@ export default {
         return;
       }
       this.estimate_array.push(num);
+    },
+    clearEstimateArrayElements: function () {
+      this.estimate_array.splice(0);
     },
   },
 };
