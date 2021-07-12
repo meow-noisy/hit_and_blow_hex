@@ -3,7 +3,7 @@
     <v-container fluid fill-height>
       <v-layout align-center justify-center>
         <v-flex xs12 sm8 md8>
-          {{ message }}
+          {{ message }} {{ answer_array }}
           <v-card class="elevation-12">
             <v-btn
               v-for="label in button_label_list"
@@ -35,7 +35,12 @@
             <v-btn color="accent" elevation="2" height="100" width="100"
               >give up</v-btn
             >
-            <v-btn color="accent" elevation="2" height="100" width="100"
+            <v-btn
+              color="accent"
+              elevation="2"
+              height="100"
+              width="100"
+              v-on:click="setAnswerNumberGenerator()"
               >reset</v-btn
             >
           </v-card>
@@ -55,6 +60,7 @@ export default {
 
   data: () => ({
     estimate_array: [],
+    answer_array: [],
     limit_of_num: 5,
     button_label_list: [
       "0",
@@ -77,6 +83,10 @@ export default {
     num_button_disable: false,
   }),
 
+  created: function () {
+    this.setAnswerNumberGenerator();
+  },
+
   computed: {
     message: function () {
       return this.estimate_array;
@@ -97,6 +107,16 @@ export default {
     },
     clearEstimateArrayElements: function () {
       this.estimate_array.splice(0);
+    },
+    setAnswerNumberGenerator: function () {
+      // copy
+      let button_label_list_copy = this.button_label_list.concat();
+      // Shuffle array
+      let shuffled = button_label_list_copy.sort(() => 0.5 - Math.random());
+      // Get sub-array of first n elements after shuffled
+      let selected = shuffled.slice(0, this.limit_of_num);
+
+      this.answer_array = selected;
     },
   },
 };
