@@ -3,7 +3,7 @@
     <v-container fluid fill-height>
       <v-layout align-center justify-center>
         <v-flex xs12 sm8 md8>
-          {{ message }} {{ answer_array }}
+          {{ message }} {{ answer_array }} {{ hit }} {{ blow }}
           <v-card class="elevation-12">
             <v-btn
               v-for="label in button_label_list"
@@ -22,6 +22,7 @@
               height="100"
               width="100"
               v-bind:disabled="submit_button_disable"
+              v-on:click="count_num_of_hit_and_blow()"
               >submit</v-btn
             >
             <v-btn
@@ -81,6 +82,8 @@ export default {
       "F",
     ],
     num_button_disable: false,
+    hit: 0,
+    blow: 0,
   }),
 
   created: function () {
@@ -117,6 +120,25 @@ export default {
       let selected = shuffled.slice(0, this.limit_of_num);
 
       this.answer_array = selected;
+    },
+
+    count_num_of_hit_and_blow: function () {
+      let hit = 0;
+      let blow = 0;
+
+      for (let i = 0, len = this.estimate_array.length; i < len; ++i) {
+        if (this.estimate_array[i] === this.answer_array[i]) {
+          ++hit;
+        }
+
+        if (this.answer_array.includes(this.estimate_array[i])) {
+          ++blow;
+        }
+      }
+      this.hit = hit;
+      this.blow = blow;
+
+      this.clearEstimateArrayElements();
     },
   },
 };
