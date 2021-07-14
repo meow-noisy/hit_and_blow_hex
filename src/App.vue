@@ -6,14 +6,14 @@
           {{ message }} {{ answer_array }} {{ hit }} {{ blow }}
           <v-card class="elevation-12">
             <v-btn
-              v-for="label in button_label_list"
-              v-bind:key="label.id"
+              v-for="(label, index) in button_label_list"
+              v-bind:key="index"
               color="primary"
               elevation="2"
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray(label)"
-              v-bind:disabled="num_button_disable"
+              v-bind:disabled="numButtonDisable(label, index)"
               >{{ label }}</v-btn
             >
             <v-btn
@@ -81,7 +81,6 @@ export default {
       "E",
       "F",
     ],
-    num_button_disable: false,
     hit: 0,
     blow: 0,
   }),
@@ -120,6 +119,11 @@ export default {
       let selected = shuffled.slice(0, this.limit_of_num);
 
       this.answer_array = selected;
+    },
+
+    numButtonDisable: function (label, index) {
+      console.log(index);
+      return this.estimate_array.includes(label);
     },
 
     count_num_of_hit_and_blow: function () {
