@@ -45,6 +45,27 @@
               >reset</v-btn
             >
           </v-card>
+
+          <v-card class="elevation-12">
+            <v-simple-table>
+              <thead>
+                <tr>
+                  <th class="text-left">submit num</th>
+                  <th class="text-left">predict num</th>
+                  <th class="text-left">hit</th>
+                  <th class="text-left">blow</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(record, index) in predict_history" :key="index">
+                  <td>{{ index }}</td>
+                  <td>{{ record.predict }}</td>
+                  <td>{{ record.hit }}</td>
+                  <td>{{ record.blow }}</td>
+                </tr>
+              </tbody></v-simple-table
+            >
+          </v-card>
         </v-flex>
       </v-layout>
     </v-container>
@@ -83,6 +104,7 @@ export default {
     ],
     hit: 0,
     blow: 0,
+    predict_history: [],
   }),
 
   created: function () {
@@ -112,13 +134,15 @@ export default {
     },
     setAnswerNumberGenerator: function () {
       // copy
-      let button_label_list_copy = this.button_label_list.concat();
+      let button_label_list_copy = this.button_label_list.slice();
       // Shuffle array
       let shuffled = button_label_list_copy.sort(() => 0.5 - Math.random());
       // Get sub-array of first n elements after shuffled
       let selected = shuffled.slice(0, this.limit_of_num);
 
       this.answer_array = selected;
+
+      this.predict_history.splice(0);
     },
 
     numButtonDisable: function (label, index) {
@@ -141,6 +165,12 @@ export default {
       }
       this.hit = hit;
       this.blow = blow;
+
+      this.predict_history.push({
+        predict: this.estimate_array.slice(),
+        hit: hit,
+        blow: blow,
+      });
 
       this.clearEstimateArrayElements();
     },
