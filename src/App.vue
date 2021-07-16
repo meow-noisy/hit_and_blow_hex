@@ -2,8 +2,12 @@
   <v-app>
     <v-container fluid fill-height>
       <v-layout align-center justify-center>
+        <v-card class="elevation-12">
+          {{ message }}
+        </v-card>
+
         <v-flex xs12 sm8 md8>
-          {{ message }} {{ answer_array }} {{ hit }} {{ blow }}
+          {{ current_predict }} {{ answer_array }} {{ hit }} {{ blow }}
           <v-card class="elevation-12">
             <v-btn
               v-for="(label, index) in button_label_list"
@@ -105,6 +109,7 @@ export default {
     hit: 0,
     blow: 0,
     predict_history: [],
+    message: "",
   }),
 
   created: function () {
@@ -112,7 +117,7 @@ export default {
   },
 
   computed: {
-    message: function () {
+    current_predict: function () {
       return this.estimate_array;
     },
 
