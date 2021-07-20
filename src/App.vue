@@ -17,7 +17,7 @@
               height="100"
               width="100"
               v-on:click="addNumToEstimateArray(label)"
-              v-bind:disabled="numButtonDisable(label, index)"
+              v-bind:disabled="numButtonDisable(label)"
               >{{ label }}</v-btn
             >
             <v-btn
@@ -189,8 +189,7 @@ export default {
       this.predict_history.splice(0);
     },
 
-    numButtonDisable: function (label, index) {
-      console.log(index);
+    numButtonDisable: function (label) {
       return this.estimate_array.includes(label);
     },
 
@@ -218,6 +217,8 @@ export default {
 
       this.clearEstimateArrayElements();
     },
+
+    goGaveOverState: function () {},
   },
 };
 </script>
