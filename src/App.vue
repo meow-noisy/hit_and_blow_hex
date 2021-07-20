@@ -82,6 +82,7 @@
               height="100"
               width="100"
               v-on:click="setAnswerNumberGenerator()"
+              v-show="show"
               >reset</v-btn
             >
           </v-card>
@@ -147,6 +148,7 @@ export default {
     predict_history: [],
     message: "",
     dialog: false,
+    show: false,
   }),
 
   created: function () {
