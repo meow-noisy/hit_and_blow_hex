@@ -35,6 +35,7 @@
               height="100"
               width="100"
               v-on:click="clearEstimateArrayElements()"
+              v-bind:disabled="clear_disabled"
               >clear</v-btn
             >
 
@@ -47,6 +48,7 @@
                   width="100"
                   v-bind="attrs"
                   v-on="on"
+                  v-bind:disabled="giveup_disabled"
                   >give up</v-btn
                 >
               </template>
@@ -69,6 +71,7 @@
                     elevation="2"
                     color="accent"
                     @click="dialog = false"
+                    v-on:click="goGaveOverState()"
                   >
                     Yes, I give up.
                   </v-btn>
@@ -77,14 +80,14 @@
             </v-dialog>
 
             <v-btn
-              color="accent"
+              color="red"
               elevation="2"
               height="100"
               width="100"
-              v-on:click="setAnswerNumberGenerator()"
               v-show="show"
-              >reset</v-btn
-            >
+              v-on:click="retryGame()"
+              >retry
+            </v-btn>
           </v-card>
 
           <v-card class="elevation-12">
@@ -148,7 +151,7 @@ export default {
     predict_history: [],
     message: "",
     dialog: false,
-    show: false,
+    gameover_state: false,
   }),
 
   created: function () {
@@ -162,6 +165,30 @@ export default {
 
     submit_button_disable: function () {
       return this.estimate_array.length < this.limit_of_num;
+    },
+
+    clear_disabled: function () {
+      if (this.gameover_state == true) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+
+    giveup_disabled: function () {
+      if (this.gameover_state == true) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+
+    show: function () {
+      if (this.gameover_state == true) {
+        return true;
+      } else {
+        return false;
+      }
     },
   },
 
@@ -190,6 +217,9 @@ export default {
     },
 
     numButtonDisable: function (label) {
+      if (this.gameover_state == true) {
+        return true;
+      }
       return this.estimate_array.includes(label);
     },
 
@@ -217,8 +247,15 @@ export default {
 
       this.clearEstimateArrayElements();
     },
-
-    goGaveOverState: function () {},
+    goGaveOverState: function () {
+      this.gameover_state = true;
+      this.estimate_array = [];
+    },
+    retryGame: function () {
+      this.setAnswerNumberGenerator();
+      this.gameover_state = false;
+      this.predict_history = [];
+    },
   },
 };
 </script>
