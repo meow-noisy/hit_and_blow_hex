@@ -267,6 +267,8 @@ export default {
       this.estimate_array = [];
       this.predict_history = [];
       this.message = "";
+      this.hit = 0;
+      this.blow = 0;
     },
   },
 };
