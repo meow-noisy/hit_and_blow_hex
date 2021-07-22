@@ -2,12 +2,10 @@
   <v-app>
     <v-container fluid fill-height>
       <v-layout align-center justify-center>
-        <v-card class="elevation-12">
-          {{ message }}
-        </v-card>
+        <v-card class="elevation-12"> {{ message }}</v-card>
 
         <v-flex xs12 sm8 md8>
-          {{ current_predict }} {{ answer_array }} {{ hit }} {{ blow }}
+          {{ current_predict }} {{ hit }} {{ blow }}
           <v-card class="elevation-12">
             <v-btn
               v-for="(label, index) in button_label_list"
@@ -164,6 +162,9 @@ export default {
     },
 
     submit_button_disable: function () {
+      if (this.gameover_state == true) {
+        return true;
+      }
       return this.estimate_array.length < this.limit_of_num;
     },
 
@@ -245,16 +246,27 @@ export default {
         blow: blow,
       });
 
-      this.clearEstimateArrayElements();
+      if (hit === this.limit_of_num) {
+        this.goGameClearState();
+      } else {
+        this.clearEstimateArrayElements();
+      }
     },
     goGaveOverState: function () {
       this.gameover_state = true;
       this.estimate_array = [];
+      this.message = this.answer_array;
+    },
+    goGameClearState: function () {
+      this.gameover_state = true;
+      this.message = "Congratulations !";
     },
     retryGame: function () {
       this.setAnswerNumberGenerator();
       this.gameover_state = false;
+      this.estimate_array = [];
       this.predict_history = [];
+      this.message = "";
     },
   },
 };
