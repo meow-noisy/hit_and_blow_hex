@@ -2,9 +2,9 @@
   <v-app>
     <v-container fluid fill-height>
       <v-layout align-center justify-center>
-        <v-card class="elevation-12"> {{ message }}</v-card>
-
         <v-flex xs12 sm8 md8>
+          <v-card class="elevation-12"> {{ message }}</v-card>
+
           {{ current_predict }} {{ hit }} {{ blow }}
           <v-card class="elevation-12">
             <v-btn
@@ -87,7 +87,8 @@
               >retry
             </v-btn>
           </v-card>
-
+        </v-flex>
+        <v-flex xs12 sm4 md4>
           <v-card class="elevation-12">
             <v-simple-table>
               <thead>
