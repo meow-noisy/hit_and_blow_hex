@@ -2,10 +2,10 @@
   <v-app>
     <v-container fluid fill-height>
       <v-layout align-center justify-center>
-        <v-flex xs12 sm8 md8>
-          <v-card class="elevation-12"> {{ message }}</v-card>
+        <v-flex xs12 sm7 md7>
+          <v-card class="elevation-0"> {{ message }}</v-card>
 
-          {{ current_predict }} {{ hit }} {{ blow }}
+          {{ current_predict }}
           <v-card class="elevation-12">
             <v-btn
               v-for="(label, index) in button_label_list"
@@ -18,6 +18,9 @@
               v-bind:disabled="numButtonDisable(label)"
               >{{ label }}</v-btn
             >
+          </v-card>
+
+          <v-card class="elevation-12">
             <v-btn
               color="accent"
               elevation="2"
@@ -79,6 +82,7 @@
 
             <v-btn
               color="red"
+              class="white--text"
               elevation="2"
               height="100"
               width="100"
@@ -159,7 +163,7 @@ export default {
 
   computed: {
     current_predict: function () {
-      return this.estimate_array;
+      return this.estimate_array.join(" ");
     },
 
     submit_button_disable: function () {
@@ -242,7 +246,7 @@ export default {
       this.blow = blow;
 
       this.predict_history.push({
-        predict: this.estimate_array.slice(),
+        predict: this.current_predict,
         hit: hit,
         blow: blow,
       });
@@ -256,7 +260,7 @@ export default {
     goGaveOverState: function () {
       this.gameover_state = true;
       this.estimate_array = [];
-      this.message = this.answer_array;
+      this.message = `Answer is "${this.answer_array.join(" ")}"`;
     },
     goGameClearState: function () {
       this.gameover_state = true;
