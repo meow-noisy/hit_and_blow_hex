@@ -3,9 +3,10 @@
     <v-container fluid fill-height>
       <v-layout align-center justify-center>
         <v-flex xs12 sm7 md7>
-          <v-card class="elevation-0"> {{ message }}</v-card>
-
-          {{ current_predict }}
+          <v-card class="elevation-0">
+            {{ message }}<br />
+            {{ current_predict }}
+          </v-card>
           <v-card class="elevation-12">
             <v-btn
               v-for="(label, index) in button_label_list"
@@ -163,6 +164,9 @@ export default {
 
   computed: {
     current_predict: function () {
+      if (this.estimate_array.length === 0) {
+        return `Predict ${this.limit_of_num} digit number. Press buttons.`;
+      }
       return this.estimate_array.join(" ");
     },
 
