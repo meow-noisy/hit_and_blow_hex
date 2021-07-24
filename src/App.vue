@@ -6,7 +6,7 @@
 
     <v-container fluid fill-height>
       <v-layout align-center justify-center>
-        <v-flex xs12 sm6 md6>
+        <v-flex xs6 sm6 md6>
           <v-card class="elevation-0">
             {{ message }}<br />
             {{ current_predict }}
@@ -100,7 +100,7 @@
           </v-col>
         </v-flex>
 
-        <v-flex xs12 sm4 md4>
+        <v-flex xs4 sm4 md4>
           <v-card class="elevation-12">
             <v-simple-table>
               <thead>
@@ -178,7 +178,7 @@ export default {
   computed: {
     current_predict: function () {
       if (this.estimate_array.length === 0) {
-        return `Predict ${this.limit_of_num} digit number. Press buttons.`;
+        return `Predict ${this.limit_of_num} digit number. Press ${this.limit_of_num} buttons and SUBMIT button.`;
       }
       return this.estimate_array.join(" ");
     },
