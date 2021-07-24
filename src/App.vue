@@ -1,5 +1,9 @@
 <template>
   <v-app>
+    <v-app-bar color="primary" class="white--text">
+      <v-toolbar-title>hex hit and blow</v-toolbar-title>
+    </v-app-bar>
+
     <v-container fluid fill-height>
       <v-layout align-center justify-center>
         <v-flex xs12 sm6 md6>
@@ -120,6 +124,12 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <v-footer
+      ><v-col class="text-right"
+        >&copy; meow-noisy (<a href="https://twitter.com/meow_noisy">Twitter</a
+        >)</v-col
+      ></v-footer
+    >
   </v-app>
 </template>
 
