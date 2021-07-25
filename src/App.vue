@@ -107,8 +107,47 @@
                 <tr>
                   <th class="text-left">submit num</th>
                   <th class="text-left">predict num</th>
-                  <th class="text-left">hit</th>
-                  <th class="text-left">blow</th>
+                  <th class="text-left">
+                    hit
+                    <v-tooltip bottom>
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-icon
+                          small
+                          color="primary"
+                          dark
+                          v-bind="attrs"
+                          v-on="on"
+                          >mdi-information-outline</v-icon
+                        >
+                      </template>
+                      <span
+                        >"hit" means how many predicted digits are correct at
+                        position. <br />For example, if answer is "1 2 3 4 5"
+                        and predict is "1 2 3 A 4", "hit" counts 3</span
+                      >
+                    </v-tooltip>
+                  </th>
+
+                  <th class="text-left">
+                    blow
+                    <v-tooltip bottom>
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-icon
+                          small
+                          color="primary"
+                          dark
+                          v-bind="attrs"
+                          v-on="on"
+                          >mdi-information-outline</v-icon
+                        >
+                      </template>
+                      <span
+                        >"blow" means how many predicted digits are included in
+                        correct digits.<br />For example, if answer is "1 2 3 4
+                        5" and predict is "1 2 3 A 4", "blow" counts 4</span
+                      >
+                    </v-tooltip>
+                  </th>
                 </tr>
               </thead>
               <tbody>
