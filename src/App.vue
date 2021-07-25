@@ -126,8 +126,10 @@
     </v-container>
     <v-footer
       ><v-col class="text-right"
-        >&copy; meow-noisy (<a href="https://twitter.com/meow_noisy">Twitter</a
-        >)</v-col
+        >&copy; meow-noisy
+        <a href="https://twitter.com/meow_noisy" style="text-decoration: none"
+          ><v-icon>mdi-twitter</v-icon></a
+        ></v-col
       ></v-footer
     >
   </v-app>
