@@ -1,24 +1,3 @@
-# hit_and_blow_vue
+# 5-digit and hexadecimal hit and blow
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+You can play at https://meow-noisy.github.io/hit_and_blow_hex/
