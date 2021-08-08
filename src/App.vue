@@ -98,6 +98,7 @@
               </v-btn>
             </v-card>
           </v-col>
+          <v-textarea label="MEMO" clearable outlined rows="2" v-model="memo" />
         </v-flex>
 
         <v-flex xs4 sm4 md4>
@@ -210,6 +211,7 @@ export default {
     message: "",
     dialog: false,
     gameover_state: false,
+    memo: "",
   }),
 
   created: function () {
@@ -332,6 +334,7 @@ export default {
       this.message = "";
       this.hit = 0;
       this.blow = 0;
+      this.memo = "";
     },
   },
 };
